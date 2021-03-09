@@ -8,12 +8,13 @@
     <script src="https://d3js.org/d3.v6.js"></script>
     <style type="text/css">
 
-        div.bar {
+        div.bars {
             display: inline-block;
             width: 50px;
-            height: 75px;	/* Gets overriden by D3-assigned height below */
+            height: 50px;	/* Gets overriden by D3-assigned height below */
             margin-right: 2px;
             background-color: rgb(68, 10, 161);
+            border-radius: 50%;
         }
 
     </style>
@@ -33,16 +34,11 @@
             genres.push(entries[i].genre);
         }
         console.log(genres);
-        drawBars();
-    });
-    function drawBars()
-    {   
-
         d3.select("body").selectAll("div")
                                     .data(names)
                                     .enter()
                                     .append("div")
-                                    .attr("class","bar")
+                                    .attr("class","bars")
                                     .style("height",function(d){
                                         let barHeight = d*15;
                                         return barHeight +"px";
@@ -58,6 +54,11 @@
              
                 document.getElementById("Genres").innerHTML = genres[genreIndex]; 
             })
+    });
+    function drawBars()
+    {   
+
+       
     }    
 </script>
 <p id="Name">Hover over each bar to display the Name.</p>
